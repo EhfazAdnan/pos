@@ -1,7 +1,7 @@
 <?php
 require "../app/core/init.php";
 
-$controller = $_GET['page_name'] ?? "home";
+$controller = $_GET['pg'] ?? "home";
 $controller = strtolower($controller);
 
 if(file_exists("../app/controllers/" . $controller . ".php")){

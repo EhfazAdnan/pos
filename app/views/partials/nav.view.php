@@ -8,19 +8,19 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Point Of Sale</a>
+          <a class="nav-link active" aria-current="page" href="index.php?pg=pos">Point Of Sale</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Admin</a>
+          <a class="nav-link" href="index.php?pg=admin">Admin</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="index.php?pg=login">Login</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Signup</a>
+          <a class="nav-link" href="index.php?pg=signup">Signup</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -28,10 +28,10 @@
             Hi, User
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Profile-Setting</a></li>
+            <li><a class="dropdown-item" href="index.php?pg=profile">Profile</a></li>
+            <li><a class="dropdown-item" href="index.php?pg=page-setting">Profile-Setting</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="index.php?pg=logout">Logout</a></li>
           </ul>
         </li>
 

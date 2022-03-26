@@ -10,3 +10,15 @@
     <link rel="stylesheet" href="assets/css/all.min.css">
 </head>
 <body>
+
+<?php
+   $no_nav[] = "login";
+?>
+
+<?php 
+if(!in_array($controller, $no_nav)) :
+require views_path('partials/nav'); 
+endif;
+?>
+
+<div class="container-fluid" style="min-width: 350px;">
