@@ -25,7 +25,7 @@
 
           <div class="input-group mb-3">
               <span class="input-group-text">Retype Password</span>
-              <input type="text" class="form-control" placeholder="retype-password" name="retype-password" id="retype-password">
+              <input type="text" class="form-control" placeholder="password_retype" name="password_retype" id="password_retype">
           </div>
 
           <button class="btn btn-primary float-end">Signup</button>
