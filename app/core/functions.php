@@ -49,3 +49,35 @@ function query($query, $data = array()){
 
    return false;
 }
+
+function allowed_columns($data, $table){
+    if($table == 'users'){
+        $columns = [
+           'username',
+           'email',
+           'password',
+           'role',
+           'image',
+           'date',
+        ];
+
+        foreach($data as $key => $value){
+           if(!in_array($key, $columns)){
+               unset($data[$key]);
+           }
+        }
+
+        return $data;
+    }
+}
+
+function insert($data, $table){
+    $clean_array = allowed_columns($data, $table);
+    $keys = array_keys($clean_array);
+
+    $query = "insert into $table ";
+    $query .= "(" . implode (",", $keys) . ") values ";
+    $query .= "(:" . implode (",:", $keys) . ")";
+
+    query($query, $clean_array);
+}
