@@ -101,14 +101,14 @@ function validate($data, $table){
         $errors['email'] = "Email Not Valid";
     }
 
-        // check password
-        if(empty($data['password'])){
-            $errors['password'] = "Password is required";
-        }else if($data['password'] !== $data['password_retype']){
-            $errors['password'] = "Password do not match";
-        }else if(strlen($data['password']) < 8){
-            $errors['password'] = "Password must be at least 8 characters long";
-        }
+    // check password
+    if(empty($data['password'])){
+        $errors['password'] = "Password is required";
+    }else if($data['password'] !== $data['password_retype']){
+        $errors['password'] = "Password do not match";
+    }else if(strlen($data['password']) < 8){
+        $errors['password'] = "Password must be at least 8 characters long";
+    }
 
    }
 
