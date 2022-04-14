@@ -26,7 +26,7 @@ function db_connect(){
     $DBDRIVER = "mysql";
 
     try{
-       $con = new PDO("mysql:host=localhost;dbname=pos_db", $DBUSER,$DBPASS);
+       $con = new PDO("$DBDRIVER:host=$DBHOST;dbname=$DBNAME", $DBUSER,$DBPASS);
     }catch(PDOException $e){
        echo $e->getMessage();
     }
@@ -35,8 +35,17 @@ function db_connect(){
 
 }
 
-db_connect();
-
 function query($query, $data = array()){
+   $con = db_connect();
+   $smt = $con->prepare($query);
+   $check = $smt->execute($data);
 
+   if($check){
+       $result = $smt->fetchAll(PDO::FETCH_ASSOC);
+       if(is_array($result) && count($result) > 0){
+           return $result;
+       }
+   }
+
+   return false;
 }
