@@ -18,6 +18,10 @@ function esc($str){
     return htmlspecialchars($str);
 }
 
+function redirect($page){
+    header("Location: index.php?pg=" . $page);
+}
+
 function db_connect(){
     $DBHOST = "localhost";
     $DBNAME = "pos_db";
@@ -120,4 +124,8 @@ function set_value($key, $default = ""){
         return $_POST[$key];
     }
     return $default;
+}
+
+function authenticate($row){
+   $_SESSION['USER'] = $row;
 }
