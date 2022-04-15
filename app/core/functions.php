@@ -105,7 +105,7 @@ function validate($data, $table){
     if(empty($data['password'])){
         $errors['password'] = "Password is required";
     }else if($data['password'] !== $data['password_retype']){
-        $errors['password'] = "Password do not match";
+        $errors['password_retype'] = "Password do not match";
     }else if(strlen($data['password']) < 8){
         $errors['password'] = "Password must be at least 8 characters long";
     }
@@ -113,4 +113,11 @@ function validate($data, $table){
    }
 
    return $errors;
+}
+
+function set_value($key, $default = ""){
+    if(!empty($_POST[$key])){
+        return $_POST[$key];
+    }
+    return $default;
 }

@@ -8,20 +8,37 @@
       <br>
 
       <form action="" method="post">
+
+          <?php if(!empty($errors['username'])) : ?>
+            <small class="text-danger"><?=$errors['username'];?></small>
+          <?php endif; ?>
+
           <div class="input-group mb-3">
               <span class="input-group-text">UserName</span>
-              <input type="text" class="form-control" placeholder="Username" name="username" id="username" autofocus>
+              <input value="<?=set_value('username');?>" type="text" class="form-control" placeholder="Username" name="username" id="username" autofocus>
           </div>
+
+          <?php if(!empty($errors['email'])) : ?>
+            <small class="text-danger"><?=$errors['email'];?></small>
+          <?php endif; ?>
 
           <div class="input-group mb-3">
               <span class="input-group-text">Email</span>
-              <input type="email" class="form-control" placeholder="email" name="email" id="email">
+              <input value="<?=set_value('email');?>" type="email" class="form-control" placeholder="email" name="email" id="email">
           </div>
+
+          <?php if(!empty($errors['password'])) : ?>
+            <small class="text-danger"><?=$errors['password'];?></small>
+          <?php endif; ?>
 
           <div class="input-group mb-3">
               <span class="input-group-text">Password</span>
               <input type="text" class="form-control" placeholder="password" name="password" id="password">
           </div>
+
+          <?php if(!empty($errors['password_retype'])) : ?>
+            <small class="text-danger"><?=$errors['password_retype'];?></small>
+          <?php endif; ?>
 
           <div class="input-group mb-3">
               <span class="input-group-text">Retype Password</span>
