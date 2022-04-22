@@ -10,14 +10,20 @@
 
       <form action="" method="post">
 
+          <?php if(!empty($errors['email'])) : ?>
+            <small class="text-danger"><?=$errors['email'];?></small>
+          <?php endif; ?>
           <div class="input-group mb-3">
               <span class="input-group-text">Email</span>
               <input type="email" class="form-control" placeholder="email" name="email" id="email" autofocus>
           </div>
 
+          <?php if(!empty($errors['password'])) : ?>
+            <small class="text-danger"><?=$errors['password'];?></small>
+          <?php endif; ?>
           <div class="input-group mb-3">
               <span class="input-group-text">Password</span>
-              <input type="text" class="form-control" placeholder="password" name="password" id="password">
+              <input type="password" class="form-control" placeholder="password" name="password" id="password">
           </div>
 
           <button class="btn btn-primary">Login</button>

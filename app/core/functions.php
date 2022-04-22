@@ -86,6 +86,18 @@ function insert($data, $table){
     query($query, $clean_array);
 }
 
+function where($data, $table){
+    $keys = array_keys($data);
+
+    $query = "select * from $table where ";
+    foreach($keys as $key){
+        $query .= "$key =:$key && ";
+    }
+
+    $query = trim($query, "&& ");
+    return query($query, $data);
+}
+
 function validate($data, $table){
    $errors = [];
 
