@@ -7,8 +7,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
    $errors = validate($_POST,'users');
    if(empty($errors)){
-     insert($_POST, 'users');
 
+     $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+     insert($_POST, 'users');
      redirect('login');
    }
    

@@ -15,7 +15,7 @@
           <?php endif; ?>
           <div class="input-group mb-3">
               <span class="input-group-text">Email</span>
-              <input type="email" class="form-control" placeholder="email" name="email" id="email" autofocus>
+              <input type="email" class="form-control" placeholder="email" name="email" id="email" autofocus value="<?=set_value('email');?>">
           </div>
 
           <?php if(!empty($errors['password'])) : ?>

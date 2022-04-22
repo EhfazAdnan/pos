@@ -3,13 +3,18 @@
 $errors = [];
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
+
     if($row = where(['email' => $_POST['email']], 'users')){
-        if($row[0]['password'] === $_POST['password']){
-            authenticate($row);
+
+        if(password_verify($_POST['password'], $row[0]['password'])){
+
+            authenticate($row[0]);
             redirect('home');
+
         }else{
             $errors['password'] = "Wrong Password";
         }
+
     }else{
         $errors['email'] = "Wrong Email";
     }

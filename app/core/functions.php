@@ -141,3 +141,10 @@ function set_value($key, $default = ""){
 function authenticate($row){
    $_SESSION['USER'] = $row;
 }
+
+function auth($column){
+    if(!empty($_SESSION['USER'][$column])){
+        return $_SESSION['USER'][$column];
+    }
+    return "Guest User";
+}
