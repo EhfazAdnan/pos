@@ -43,29 +43,6 @@ function allowed_columns($data, $table){
     }
 }
 
-function insert($data, $table){
-    $clean_array = allowed_columns($data, $table);
-    $keys = array_keys($clean_array);
-
-    $query = "insert into $table ";
-    $query .= "(" . implode (",", $keys) . ") values ";
-    $query .= "(:" . implode (",:", $keys) . ")";
-
-    query($query, $clean_array);
-}
-
-function where($data, $table){
-    $keys = array_keys($data);
-
-    $query = "select * from $table where ";
-    foreach($keys as $key){
-        $query .= "$key =:$key && ";
-    }
-
-    $query = trim($query, "&& ");
-    return query($query, $data);
-}
-
 function validate($data, $table){
    $errors = [];
 
