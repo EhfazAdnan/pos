@@ -30,7 +30,9 @@
 
         <br>
         <button class="btn btn-danger float-end">Save</button>
-        <button type="button" class="btn btn-primary">Cancel</button>
+        <a href="index.php?pg=admin&tab=products">
+           <button type="button" class="btn btn-primary">Cancel</button>
+        </a>
 
    </form>
 

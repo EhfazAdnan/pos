@@ -15,6 +15,17 @@
 
     <div class="border col p-3">
         <h3><?=strtoupper($tab);?></h3>
+
+        <?php
+           switch($tab){
+               case 'products' :
+                require views_path('admin/products');
+                break;
+
+               default:
+                break;
+           }
+        ?>
     </div>
 </div>
 
