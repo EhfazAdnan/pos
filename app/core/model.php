@@ -4,8 +4,23 @@ class Model extends Database {
 
     protected $table = "users";
 
+    protected function get_allowed_columns($data){
+
+        if(!empty($this->allowed_columns)){
+            
+            foreach($data as $key => $value){
+                if(!in_array($key, $columns)){
+                    unset($data[$key]);
+                }
+            }
+        }
+        
+        return $data;
+    }
+
     public function insert($data){
-        $clean_array = allowed_columns($data, $this->table);
+
+        $clean_array = $this->get_allowed_columns($data, $this->table);
         $keys = array_keys($clean_array);
     
         $query = "insert into $this->table ";
@@ -17,6 +32,7 @@ class Model extends Database {
     }
     
     public function where($data){
+
         $keys = array_keys($data);
     
         $query = "select * from $this->table where ";

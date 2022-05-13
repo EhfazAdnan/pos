@@ -4,7 +4,8 @@ $errors = [];
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    if($row = where(['email' => $_POST['email']], 'users')){
+    $user = new User();
+    if($row = $user->where(['email' => $_POST['email']], 'users')){
 
         if(password_verify($_POST['password'], $row[0]['password'])){
 
