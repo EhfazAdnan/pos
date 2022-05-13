@@ -7,9 +7,9 @@ class Model extends Database {
     protected function get_allowed_columns($data){
 
         if(!empty($this->allowed_columns)){
-            
+
             foreach($data as $key => $value){
-                if(!in_array($key, $columns)){
+                if(!in_array($key, $this->allowed_columns)){
                     unset($data[$key]);
                 }
             }
