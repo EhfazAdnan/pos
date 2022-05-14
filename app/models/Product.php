@@ -21,7 +21,7 @@ class Product extends Model {
         // check description
         if(empty($data['description'])){
             $errors['description'] = "description is required";
-        }else if(!preg_match('/[a-zA-Z0-9 _-\&\(\)]+/', $data['description'])){
+        }else if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['description'])){
             $errors['description'] = "Only letters allowed in description";
         }
 
@@ -58,5 +58,9 @@ class Product extends Model {
 
     public function generate_barcode(){
         return "2222" . rand(1000, 999999999);
+    }
+
+    public function generate_filename($ext = "jpg"){
+        return hash("sha1",rand(1000, 999999999))."_".rand(1000,9999).".".$ext;
     }
 }
