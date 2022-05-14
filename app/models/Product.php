@@ -1,6 +1,6 @@
 <?php
 
-class User extends Model {
+class Product extends Model {
 
     protected $table = "products";
 
@@ -37,6 +37,20 @@ class User extends Model {
            $errors['amount'] = "Amount is required";
         }else if(!preg_match('/^[0-9.]+$/', $data['amount'])){
            $errors['amount'] = "Only numbers allowed in amount";
+        }
+
+        // check image
+        $max_size = 4;
+        $size = $max_size * (1024 * 1024);
+
+        if(empty($data['image'])){
+            $errors['image'] = "Product image is required";
+        }else if(!($data['image']['type'] == "image/jpeg" || $data['image']['type'] == "image/png")){
+            $errors['image'] = "Image must be a valid JPEG or PNG";
+        }else if($data['image']['error'] > 0){
+            $errors['image'] = "Image failed to upload";
+        }else if($data['image']['size'] > $size){
+            $errors['image'] = "Image size must be lower then" . $max_size . "MB";
         }
 
         return $errors;
