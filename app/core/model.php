@@ -46,4 +46,23 @@ class Model extends Database {
         return $db->query($query, $data);
     }
 
+    public function first($data){
+
+        $keys = array_keys($data);
+    
+        $query = "select * from $this->table where ";
+        foreach($keys as $key){
+            $query .= "$key =:$key && ";
+        }
+    
+        $query = trim($query, "&& ");
+    
+        $db = new Database;
+        if($res = $db->query($query, $data)){
+           return $res[0];
+        }
+
+        return false;
+    }
+
 }
