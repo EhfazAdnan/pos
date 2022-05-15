@@ -30,6 +30,24 @@ class Model extends Database {
         $db = new Database;
         $db->query($query, $clean_array);
     }
+
+    public function update($id,$data){
+
+        $clean_array = $this->get_allowed_columns($data, $this->table);
+        $keys = array_keys($clean_array);
+    
+        $query = "update $this->table set ";
+        foreach ($keys as $column){
+            $query .= $column . "=:" . $column . ",";
+        }
+
+        $query = trim($query,",");
+        $query .= " where id = :id";
+        $clean_array['id'] = $id;
+        
+        $db = new Database;
+        $db->query($query, $clean_array);
+    }
     
     public function where($data){
 

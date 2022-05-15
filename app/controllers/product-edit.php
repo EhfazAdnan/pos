@@ -28,9 +28,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row){
             $destination = $folder . $product->generate_filename($ext);
             move_uploaded_file($_POST['image']['tmp_name'], $destination);
             $_POST['image'] = $destination;
+
+            // delete old image
+            if(file_exists($row['image'])){
+                unlink($row['image']);
+            }
         }
 
-        $product->insert($_POST);
+        $product->update($row['id'], $_POST);
         redirect('admin&tab=products');
     }
 }

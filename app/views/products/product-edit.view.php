@@ -52,7 +52,7 @@
         </div>
 
         <br>
-        <img src="<?=$row['image']?>" class="mx-auto d-block">
+        <img src="<?=$row['image']?>" class="mx-auto d-block" style="max-width: 250px;">
 
         <br>
         <button class="btn btn-danger float-end">Save</button>
