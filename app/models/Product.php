@@ -15,7 +15,7 @@ class Product extends Model {
         'views',
     ];
 
-    public function validate($data){
+    public function validate($data, $id=null){
         $errors = [];
      
         // check description
@@ -43,14 +43,16 @@ class Product extends Model {
         $max_size = 4;
         $size = $max_size * (1024 * 1024);
 
-        if(empty($data['image'])){
-            $errors['image'] = "Product image is required";
-        }else if(!($data['image']['type'] == "image/jpeg" || $data['image']['type'] == "image/png")){
-            $errors['image'] = "Image must be a valid JPEG or PNG";
-        }else if($data['image']['error'] > 0){
-            $errors['image'] = "Image failed to upload";
-        }else if($data['image']['size'] > $size){
-            $errors['image'] = "Image size must be lower then" . $max_size . "MB";
+        if(!$id || ($id && !empty($data['image']))){
+            if(empty($data['image'])){
+                $errors['image'] = "Product image is required";
+            }else if(!($data['image']['type'] == "image/jpeg" || $data['image']['type'] == "image/png")){
+                $errors['image'] = "Image must be a valid JPEG or PNG";
+            }else if($data['image']['error'] > 0){
+                $errors['image'] = "Image failed to upload";
+            }else if($data['image']['size'] > $size){
+                $errors['image'] = "Image size must be lower then" . $max_size . "MB";
+            }
         }
 
         return $errors;
