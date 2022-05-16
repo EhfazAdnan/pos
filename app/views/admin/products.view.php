@@ -25,7 +25,7 @@
                    <td><?=esc($product['qty'])?></td>
                    <td><?=esc($product['amount'])?></td>
                    <td><img src="<?=$product['image']?>" style="max-width: 100px;"></td>
-                   <td><?=esc($product['date'])?></td>
+                   <td><?=date("jS M, Y",strtotime($product['date']))?></td>
                    <td>
                         <a href="index.php?pg=product-edit&id=<?=$product['id']?>">
                             <button class="btn btn-success btn-sm">Edit</button>

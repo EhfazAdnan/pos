@@ -48,6 +48,15 @@ class Model extends Database {
         $db = new Database;
         $db->query($query, $clean_array);
     }
+
+    public function delete($id){
+    
+        $query = "delete from $this->table where id = :id limit 1";
+        $clean_array['id'] = $id;
+        
+        $db = new Database;
+        $db->query($query, $clean_array);
+    }
     
     public function where($data){
 
