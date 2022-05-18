@@ -39,3 +39,18 @@ function auth($column){
     }
     return "Guest User";
 }
+
+function crop($filename, $size = 600){
+
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    $cropped_file = preg_replace("/\.$ext$/", "_cropped.".$ext, $filename);
+
+    echo $cropped_file;
+    return;
+
+    imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
+    imagejpeg($dst_image, $cropped_file);
+
+    imagedestroy($dst_image);
+    imagedestroy($src_image);
+}
