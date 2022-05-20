@@ -141,4 +141,16 @@
 
 </div>
 
+<script>
+  function get_data(){
+    var ajax = new XMLHttpRequest();
+    ajax.addEventListener('readystatechange', function(e){
+      console.log(ajax.responseText);
+    });
+
+    ajax.open('post','',true);
+    ajax.send();
+  }
+</script>
+
 <?php require views_path('partials/footer'); ?>

@@ -45,6 +45,11 @@ function crop($filename, $size = 600){
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     $cropped_file = preg_replace("/\.$ext$/", "_cropped.".$ext, $filename);
 
+    //check if cropped is already happens
+    if(file_exists($cropped_file)){
+        return $cropped_file;
+    }
+
     // create image resource
     switch ($ext) {
         case 'jpg';
