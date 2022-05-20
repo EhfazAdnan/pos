@@ -45,9 +45,29 @@ function crop($filename, $size = 600){
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     $cropped_file = preg_replace("/\.$ext$/", "_cropped.".$ext, $filename);
 
-    echo $cropped_file;
-    return;
+    // create image resource
+    switch ($ext) {
+        case 'jpg';
+        case 'jpeg';
+        $src_image = imagecreatefromjpeg($filename);
+        break;
 
+        case 'gif';
+        $src_image = imagecreatefromgif($filename);
+        break;
+
+        case 'png';
+        $src_image = imagecreatefrompng($filename);
+        break;
+
+        default:
+        return $filename;
+        break;
+    }
+
+    // set cropping params
+
+    
     imagecopyresampled($dst_image, $src_image, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
     imagejpeg($dst_image, $cropped_file);
 
